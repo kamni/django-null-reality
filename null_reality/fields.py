@@ -53,6 +53,6 @@ class NullableURLField(models.URLField, NullableField):
     pass
 
 
-NULLABLE_FIELDS = (NullableField, NullableCharFeild, 
+NULLABLE_FIELDS = (NullableField, NullableCharField, 
                    NullableCommaSeparatedIntegerField, NullableEmailField,
                    NullableSlugField, NullableTextField, NullableURLField)

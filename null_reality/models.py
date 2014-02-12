@@ -22,7 +22,7 @@ class NullCheckerModel(models.Model):
             if type(field) in NULLABLE_FIELDS and getattr(self, field.name) is None:
                     raise IntegrityError("%s.%s may not be null" %
                                          (self._meta.db_table, field.name))
-        super(AbstractNullCheckerModel, self).save(*args, **kwargs)
+        super(NullCheckerModel, self).save(*args, **kwargs)
     
     class Meta:
         abstract = True
