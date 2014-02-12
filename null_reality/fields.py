@@ -51,3 +51,8 @@ class NullableTextField(models.TextField, NullableField):
 
 class NullableURLField(models.URLField, NullableField):
     pass
+
+
+NULLABLE_FIELDS = (NullableField, NullableCharFeild, 
+                   NullableCommaSeparatedIntegerField, NullableEmailField,
+                   NullableSlugField, NullableTextField, NullableURLField)

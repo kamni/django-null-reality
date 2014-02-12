@@ -19,8 +19,7 @@ class NullCheckerModel(models.Model):
     """
     def save(self, *args, **kwargs):
         for field in self._meta.fields:
-            if type(field) in NULLABLE_FIELDS:
-                if not field.null and getattr(self, field.name) is None:
+            if type(field) in NULLABLE_FIELDS and getattr(self, field.name) is None:
                     raise IntegrityError("%s.%s may not be null" %
                                          (self._meta.db_table, field.name))
         super(AbstractNullCheckerModel, self).save(*args, **kwargs)
