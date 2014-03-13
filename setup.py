@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 ROOT = os.path.abspath(os.path.dirname(__file__))
 
 base_config = {'name': 'null_reality',
-               'version': '0.1',
+               'version': '0.2a1',
                'description': 'Model and field utils to make Django respect null=False validation in text-based fields.',
                'long_description': open(os.path.join(ROOT, 'README.md')).read(),
                'author': 'J Leadbetter',
@@ -15,7 +15,7 @@ base_config = {'name': 'null_reality',
                'include_package_data': True,
                'zip_safe': False,
                'install_requires': ['Django>=1.6'],
-               'classifiers': ['Development Status :: 2 - Pre-Alpha',
+               'classifiers': ['Development Status :: 3 - Alpha',
                                'Environment :: Web Environment',
                                'Framework :: Django',
                                'Intended Audience :: Developers',

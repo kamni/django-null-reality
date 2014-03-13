@@ -27,6 +27,19 @@ class NullableField(models.Field):
         # if self.null is True, will still set value to empty string to 
         # prevent issues with the database
         return super(NullableField, self).get_default()
+    
+    def south_field_triple(self):
+        """Makes this field compatible with south, if installed"""
+        try:
+            from south.modelsinspector import introspector
+        except ImportError:
+            # apparently we don't need to worry about South
+            return "", (), {}
+        
+        parent_cls = type(self).__bases__[0]
+        field_class = ".".join((parent_cls.__module__, parent_cls.__name__))
+        args, kwargs = introspector(self)
+        return field_class, args, kwargs
 
 
 class NullableCharField(models.CharField, NullableField):
@@ -56,3 +69,4 @@ class NullableURLField(models.URLField, NullableField):
 NULLABLE_FIELDS = (NullableField, NullableCharField, 
                    NullableCommaSeparatedIntegerField, NullableEmailField,
                    NullableSlugField, NullableTextField, NullableURLField)
+
